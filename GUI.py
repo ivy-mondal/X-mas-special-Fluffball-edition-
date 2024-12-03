@@ -2,7 +2,7 @@ import tkinter as tk
 
 import pygame
 
-from animations import animate_gif
+from animations import animate_gif, animate_text
 
 
 class pwettyUI:
@@ -48,11 +48,37 @@ class pwettyUI:
             self.window,
             "cherry-blossom.gif",
             (400, 200),
+            self.welcome_screen_pt_2,
+            20
+        )
+
+    def welcome_screen_pt_2(self):
+        self.clear_window()
+
+        welcome_text = "Welcome to - OUR Story (my version UwU)🤗 \n and ✨ da presentation ✨ is here too "
+        welcome_label = tk.Label(
+            self.window,
+            text="",
+            font=('Segoe Script', 20),
+            fg="#F5D3EC",
+            bg="#DB3559"
+        )
+        welcome_label.place(relx=0.3, rely=0.5, anchor='center')
+
+        animate_text(
+            self.window,
+            welcome_label,
+            welcome_text,
+            100
+        )
+        animate_gif(
+            self.window,
+            "flowerss.gif",
+            (1000, 200),
             None,
             20
         )
-    def welcome_screen_pt_2(self):
-        pass
+
     def clear_window(self):
         for widget in self.window.winfo_children():
             widget.destroy()

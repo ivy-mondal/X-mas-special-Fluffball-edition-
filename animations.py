@@ -31,3 +31,12 @@ def animate_gif(window, gif_path, position=(0, 0), callback=None, duration=5):
 
     update_frame()
     return gif_label
+
+
+def animate_text(window, label, full_text, delay):
+    def type_text(index=0):
+        if index < len(full_text):
+            current_text = full_text[:index + 1]
+            label.config(text=current_text)
+            window.after(delay, type_text, index+1)
+    type_text()
