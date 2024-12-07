@@ -3,6 +3,7 @@ import tkinter as tk
 import pygame
 
 from animations import animate_gif, animate_text
+from slide_functions import cutesy_func_01
 
 
 class pwettyUI:
@@ -75,9 +76,42 @@ class pwettyUI:
             self.window,
             "flowerss.gif",
             (1000, 200),
-            None,
+            lambda: self.throwback(lambda: self.show_slides(lambda: cutesy_func_01(self.window))),
             20
         )
+
+    def throwback(self, callback):
+        self.clear_window()
+        pygame.mixer.music.load("ocean.mp3")
+        pygame.mixer.music.set_volume(0.8)
+        pygame.mixer.music.play()
+        throwback_text = "Time for a little blast from da past UwU"
+        throwback_text_label = tk.Label(
+            self.window,
+            text="",
+            font=('Segoe Script', 40),
+            fg="#F5D3EC",
+            bg="#DB3559"
+        )
+        throwback_text_label.place(relx=0.5, rely=0.1, anchor='center')
+        animate_text(
+            self.window,
+            throwback_text_label,
+            throwback_text,
+            50
+        )
+        animate_gif(
+            self.window,
+            "throwback.gif",
+            (500, 200),
+            None,
+            10
+        )
+        callback()
+
+    def show_slides(self, function):
+        self.clear_window()
+        function()
 
     def clear_window(self):
         for widget in self.window.winfo_children():
