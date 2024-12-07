@@ -2,7 +2,7 @@ import tkinter as tk
 
 import pygame
 
-from animations import animate_text
+from animations import animate_text, create_adorableness_graph
 
 
 def cutesy_func_01(window):
@@ -20,11 +20,19 @@ def cutesy_func_01(window):
         fg="#F5D3EC",
         bg="#DB3559"
     )
-    reason_1_label.place(relx=0.5, rely=0.5, anchor='center')
+    reason_1_label.place(relx=0.5, rely=0.3, anchor='center')
 
+    def show_graph():
+        graph_frame = tk.Frame(window)
+        graph_frame.place(relx=0.5, rely=0.7, anchor='center')
+        create_adorableness_graph(graph_frame)
+
+    text_length = len(reason_1)
+    text_display_time = text_length * 100
     animate_text(
         window,
         reason_1_label,
         reason_1,
         100
     )
+    window.after(text_display_time + 500, show_graph)

@@ -94,6 +94,7 @@ class pwettyUI:
             bg="#DB3559"
         )
         throwback_text_label.place(relx=0.5, rely=0.1, anchor='center')
+        self.window.after(10000, callback)
         animate_text(
             self.window,
             throwback_text_label,
@@ -105,9 +106,8 @@ class pwettyUI:
             "throwback.gif",
             (500, 200),
             None,
-            10
+            30
         )
-        callback()
 
     def show_slides(self, function):
         self.clear_window()
