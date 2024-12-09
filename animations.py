@@ -52,6 +52,7 @@ def animate_text(window, label, full_text, delay):
 def create_adorableness_graph(frame, animate=True):
     fig = Figure(figsize=(8, 4))
     ax = fig.add_subplot(111)
+    ax.set_ylim(0, 10)
 
     characters = ['mr fluffy', 'mom', 'disco & company', 'Tartaglia', 'Aventurine']
     adorableness = [10, 10, 10, 9.5, 9.5]
@@ -61,7 +62,7 @@ def create_adorableness_graph(frame, animate=True):
     canvas_widget = canvas.get_tk_widget()
 
     if animate:
-        canvas_widget.pack_forget()
+        canvas_widget.pack()
 
         def animate_bars():
             bars = ax.bar(characters, [0] * len(adorableness), color=['red', 'pink', 'yellow', 'blue', 'green'])
@@ -81,19 +82,20 @@ def create_adorableness_graph(frame, animate=True):
                 canvas.draw()
 
                 if still_animating:
-                    frame.after(50, update_heights, current_height + 0.5)
+                    frame.after(30, update_heights, current_height + 0.1)
                 else:
                     for bar in bars:
                         height = bar.get_height()
-                        ax.text(bar.get_x() + bar.get_width() / 2., height,
+                        ax.text(bar.get_x() + bar.get_width() / 2, height,
                                 f'{height}', ha='center', va='bottom')
                     canvas.draw()
 
             update_heights()
 
-        frame.after(1000, animate_bars)
-
+        frame.after(0, animate_bars)
     else:
         bars = ax.bar(characters, adorableness,
                       color=['red', 'pink', 'yellow', 'blue', 'green'])
         canvas_widget.pack()
+
+
