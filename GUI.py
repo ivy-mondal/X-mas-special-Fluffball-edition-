@@ -10,6 +10,7 @@ class pwettyUI:
     def __init__(self):
         self.canvas = None
         pygame.mixer.init()
+        self.click_sound = pygame.mixer.Sound("heartbeat.mp3")
         self.window = tk.Tk()
         self.window.title("CRINGE  ATTAAAAACCKKKKKKKKKK😜")
         self.window.protocol("WM_DELETE_WINDOW", self.on_closing)
@@ -17,6 +18,10 @@ class pwettyUI:
         self.window.state('zoomed')
 
         self.show_welcome_screen()
+
+    def play_click_sound(self):
+        pygame.mixer.music.set_volume(0.8)
+        self.click_sound.play()
 
     def show_welcome_screen(self):
         self.clear_window()
@@ -76,7 +81,7 @@ class pwettyUI:
             self.window,
             "flowerss.gif",
             (1000, 200),
-            lambda: self.throwback(lambda: self.show_slides(lambda: cutesy_func_01(self.window))),
+            lambda: self.throwback(lambda: self.show_slides(lambda: cutesy_func_01(self.window, None, self.clear_window, self.play_click_sound))),
             20
         )
 
