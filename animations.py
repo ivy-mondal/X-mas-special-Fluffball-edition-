@@ -97,5 +97,3 @@ def create_adorableness_graph(frame, animate=True):
         bars = ax.bar(characters, adorableness,
                       color=['red', 'pink', 'yellow', 'blue', 'green'])
         canvas_widget.pack()
-
-

@@ -2,8 +2,9 @@ import tkinter as tk
 
 import pygame
 
-from animations import animate_gif, animate_text
-from slide_functions import cutesy_func_01
+from animations import animate_gif, animate_text, create_adorableness_graph
+from helper_funcs import throwback
+from slide_creation import cutesy_func
 
 
 class pwettyUI:
@@ -81,42 +82,19 @@ class pwettyUI:
             self.window,
             "flowerss.gif",
             (1000, 200),
-            lambda: self.throwback(lambda: self.show_slides(lambda: cutesy_func_01(self.window, None, self.clear_window, self.play_click_sound))),
+            lambda: throwback(self.window, self.clear_window, self.slide_01),
             20
         )
 
-    def throwback(self, callback):
-        self.clear_window()
-        pygame.mixer.music.load("ocean.mp3")
-        pygame.mixer.music.set_volume(0.8)
-        pygame.mixer.music.play()
-        throwback_text = "Time for a little blast from da past UwU"
-        throwback_text_label = tk.Label(
-            self.window,
-            text="",
-            font=('Segoe Script', 40),
-            fg="#F5D3EC",
-            bg="#DB3559"
-        )
-        throwback_text_label.place(relx=0.5, rely=0.1, anchor='center')
-        self.window.after(10000, callback)
-        animate_text(
-            self.window,
-            throwback_text_label,
-            throwback_text,
-            50
-        )
-        animate_gif(
-            self.window,
-            "throwback.gif",
-            (500, 200),
-            None,
-            30
-        )
+    def slide_01(self):
+        reason_text = "Reason 1: The adorableness UwU\n ==============================\n ohh shi...where do I even start?!\n My mr meow is like da most adorable fluffball everrr\n You're so charmingly awkward at times, my heart be exploding from cuteness overload :p\n On my personal Adoooorableeeness Scale, you're right up there with my mom and my cats.\n That's right,yo achieved legendary status!\n Even my beloved anime husbandos, Tartaglia and Aventurine, can't compete.\n Don't believe me? Check out this graph!"
 
-    def show_slides(self, function):
-        self.clear_window()
-        function()
+        memory_text = "So this song was like me back when I met(texted if yo will 😛)\n a certain 3 cats in a trenchcoat person\n To borrow the writer's word\n 'I was lost within the darkness, but then I found you'~\n look at me not being sad and  miserable and hopeless anymore UwU\n homework ;p Are yo happier than before or nwo?"
+
+        cutesy_func("Until I found you.mp3", self.window, self.clear_window, reason_text, self.play_click_sound, memory_text, lambda frame: create_adorableness_graph(frame, animate=True), "shake.gif", self.slide_02)
+
+    def slide_02(self):
+        pass
 
     def clear_window(self):
         for widget in self.window.winfo_children():
