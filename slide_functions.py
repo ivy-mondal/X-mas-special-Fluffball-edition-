@@ -3,7 +3,7 @@ import tkinter as tk
 import pygame
 from PIL import ImageTk, Image
 
-from animations import animate_text, create_adorableness_graph
+from animations import animate_text, create_adorableness_graph, animate_gif
 
 
 def create_gift_button(window, callback):
@@ -53,7 +53,30 @@ def cutesy_func_01(window, callback, clear_window_func, click_sound_func):
     reason_1_label.place(relx=0.5, rely=0.3, anchor='center')
 
     def slide_1_special():
-        pass
+        clear_window_func()
+        memory_text = "So this song was like me back when I met(texted if yo will 😛)\n a certain 3 cats in a trenchcoat person\n To borrow the writer's word\n 'I was lost within the darkness, but then I found you'~\n look at me not being sad and  miserable and hopeless anymore UwU"
+        memory_text_label = tk.Label(
+            window,
+            text="",
+            font=('Segoe Script', 20),
+            fg="#F5D3EC",
+            bg="#DB3559"
+        )
+        memory_text_label.place(relx=0.5, rely=0.3, anchor='center')
+
+        animate_text(
+            window,
+            memory_text_label,
+            memory_text,
+            300
+        )
+        animate_gif(
+            window,
+            "shake.gif",
+            (1000, 500),
+            None,
+            60
+        )
 
     def show_graph_and_return():
         graph_frame = tk.Frame(window)
