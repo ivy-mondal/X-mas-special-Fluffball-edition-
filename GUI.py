@@ -2,8 +2,8 @@ import tkinter as tk
 
 import pygame
 
-from animations import animate_gif, animate_text, create_adorableness_graph
-from helper_funcs import throwback
+from animations import animate_gif, animate_text, create_adorableness_graph, create_intelligence_graph
+from helper_funcs import throwback, transition_screen
 from slide_creation import cutesy_func
 
 
@@ -23,6 +23,13 @@ class pwettyUI:
     def play_click_sound(self):
         pygame.mixer.music.set_volume(0.8)
         self.click_sound.play()
+
+    def clear_window(self):
+        for widget in self.window.winfo_children():
+            widget.destroy()
+
+    def on_closing(self):
+        self.window.destroy()
 
     def show_welcome_screen(self):
         self.clear_window()
@@ -89,19 +96,21 @@ class pwettyUI:
     def slide_01(self):
         reason_text = "Reason 1: The adorableness UwU\n ==============================\n ohh shi...where do I even start?!\n My mr meow is like da most adorable fluffball everrr\n You're so charmingly awkward at times, my heart be exploding from cuteness overload :p\n On my personal Adoooorableeeness Scale, you're right up there with my mom and my cats.\n That's right,yo achieved legendary status!\n Even my beloved anime husbandos, Tartaglia and Aventurine, can't compete.\n Don't believe me? Check out this graph!"
 
-        memory_text = "So this song was like me back when I met(texted if yo will 😛)\n a certain 3 cats in a trenchcoat person\n To borrow the writer's word\n 'I was lost within the darkness, but then I found you'~\n look at me not being sad and  miserable and hopeless anymore UwU\n homework ;p Are yo happier than before or nwo?"
+        memory_text = "So this song was like me back when I met(texted if yo will 😛)\n a certain 3 cats in a trenchcoat person\n To borrow the writer's word\n 'I was lost within the darkness, but then I found you'~\n look at me not being sad and  miserable and hopeless anymore UwU\n homework ;p Are yo happier than before too or nwo?"
 
-        cutesy_func("Until I found you.mp3", self.window, self.clear_window, reason_text, self.play_click_sound, memory_text, lambda frame: create_adorableness_graph(frame, animate=True), "shake.gif", self.slide_02)
+        cutesy_func("Until I found you.mp3", self.window, self.clear_window, reason_text, 20, self.play_click_sound, memory_text, lambda frame, callback: create_adorableness_graph(frame, callback=callback, animate=True), "shake.gif", lambda: transition_screen(self.window, self.clear_window, self.slide_02))
 
     def slide_02(self):
+        reason_text = """ Reason #2: Intellectual Superiority (a.k.a. "The Smart Cookie Factor")\n   1. Problem-Solving Prowess: - Consistently provides solutions to my wildest ideas\n - Success rate: ~99.9% (margin of error: my stubbornnes)\n   2. First Impression:   - Initial thought: "Wow, this guy's brain is on another level\n   - Impression has only strengthened over time\n   3. Comparative Analysis:   - Subject (Mr meow) vs. Control Group (rest of humanity)\n   - Result: Subject's intelligence far exceeds control group (Note: Analysis may be influenced by high affection level)\n     4. Objective* Conclusion: Mr. Fluffball's intelligence > Universe's smartest person's intelligence
+         * Objectivity may be compromised due to overwhelming bias\n    Further research ongoing, but results suggest strong correlation 
+         between Mr. Fluffball's intelligence and my increasing adoration.\n "Don't believe me? Check out this graph!"""
+
+        memory_text = "This song gotta be meh when I noticed I won't stop yapping with yo,\n I remember finding excuses ahem learning roadblocks\n and ofc I need yo to solve my doubt 👉👈\n As they wrote 'All I know since yesterday, everything has changed'~\n (me in a morning months ago UwU) "
+
+        cutesy_func("Everything has changed.mp3", self.window, self.clear_window, reason_text, 14, self.play_click_sound, memory_text, lambda frame, callback: create_intelligence_graph(frame, callback=callback, animate=True), "dunno.gif", lambda: transition_screen(self.window, self.clear_window, self.slide_03))
+
+    def slide_03(self):
         pass
-
-    def clear_window(self):
-        for widget in self.window.winfo_children():
-            widget.destroy()
-
-    def on_closing(self):
-        self.window.destroy()
 
 
 if __name__ == "__main__":

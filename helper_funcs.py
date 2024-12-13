@@ -63,3 +63,35 @@ def throwback(window, clear_window_func, callback):
         None,
         30
     )
+
+
+def transition_screen(window, clear_window_func, callback):
+    clear_window_func()
+    pygame.mixer.music.load("heartbeat.mp3")
+    pygame.mixer.music.set_volume(0.8)
+    pygame.mixer.music.play()
+    transition_text = "Next slide incooooooooming 😸"
+    transition_text_label = tk.Label(
+        window,
+        text="",
+        font=('Segoe Script', 40),
+        fg="#F5D3EC",
+        bg="#DB3559"
+    )
+    transition_text_label.place(relx=0.5, rely=0.1, anchor='center')
+    window.after(20000, callback)
+    animate_text(
+        window,
+        transition_text_label,
+        transition_text,
+        50
+    )
+    animate_gif(
+        window,
+        "transition.gif",
+        (500, 200),
+        None,
+        30
+    )
+
+

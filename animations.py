@@ -1,3 +1,4 @@
+import tkinter
 import tkinter as tk
 from datetime import datetime
 
@@ -41,15 +42,18 @@ def animate_gif(window, gif_path, position=(0, 0), callback=None, duration=5):
 
 def animate_text(window, label, full_text, delay):
     def type_text(index=0):
-        if index < len(full_text):
-            current_text = full_text[:index + 1]
-            label.config(text=current_text)
-            window.after(delay, type_text, index + 1)
+        try:
+            if index < len(full_text):
+                current_text = full_text[:index + 1]
+                label.config(text=current_text)
+                window.after(delay, type_text, index + 1)
+        except tkinter.TclError:
+            return
 
     type_text()
 
 
-def create_adorableness_graph(frame, animate=True):
+def create_adorableness_graph(frame, callback=None, animate=True):
     fig = Figure(figsize=(8, 4))
     ax = fig.add_subplot(111)
     ax.set_ylim(0, 10)
@@ -82,7 +86,7 @@ def create_adorableness_graph(frame, animate=True):
                 canvas.draw()
 
                 if still_animating:
-                    frame.after(30, update_heights, current_height + 0.1)
+                    frame.after(30, update_heights, current_height + 0.07)
                 else:
                     for bar in bars:
                         height = bar.get_height()
@@ -90,10 +94,67 @@ def create_adorableness_graph(frame, animate=True):
                                 f'{height}', ha='center', va='bottom')
                     canvas.draw()
 
+                    if callback:  # Add this part!
+                        callback()
+
             update_heights()
 
         frame.after(0, animate_bars)
     else:
         bars = ax.bar(characters, adorableness,
                       color=['red', 'pink', 'yellow', 'blue', 'green'])
+        canvas_widget.pack()
+
+
+def create_intelligence_graph(frame, callback=None, animate=None):
+    fig = Figure(figsize=(10, 6))
+    ax = fig.add_subplot(111)
+    ax.set_ylim(-10, 1100)
+
+    categories = ['Mr. Fluffball', 'Einstein', 'Stephen Hawking', 'Me trying to code']
+    intelligence = [1000, 160, 160, -5]  # IQ scores (totally accurate, trust me)
+
+    canvas = FigureCanvasTkAgg(fig, master=frame)
+    canvas.draw()
+    canvas_widget = canvas.get_tk_widget()
+
+    if animate:
+        canvas_widget.pack()
+
+        def animate_bars():
+            bars = ax.bar(categories, [0] * len(intelligence), color=['red', 'blue', 'green', 'yellow'])
+            canvas_widget.pack()
+
+            def update_heights(current_height=0):
+                still_animating = False
+                for i, (bar, target) in enumerate(zip(bars, intelligence)):
+                    new_height = min(current_height, target)
+                    bar.set_height(new_height)
+                    if new_height < target:
+                        still_animating = True
+
+                ax.set_xlabel('Characters')
+                ax.set_ylabel("Intelligence Level (Fluffball Units)")
+                ax.set_title("Totally Unbiased Intelligence Comparison")
+                canvas.draw()
+
+                if still_animating:
+                    frame.after(30, update_heights, current_height + 10)
+                else:
+                    for bar in bars:
+                        height = bar.get_height()
+                        ax.text(bar.get_x() + bar.get_width() / 2, height,
+                                f'{height}', ha='center', va='bottom')
+                    canvas.draw()
+
+                    if callback:  # Call the callback when animation is done
+                        callback()
+
+            update_heights()
+
+        frame.after(0, animate_bars)
+
+    else:
+        bars = ax.bar(categories, intelligence,
+                      color=['red', 'blue', 'green', 'yellow'])
         canvas_widget.pack()
