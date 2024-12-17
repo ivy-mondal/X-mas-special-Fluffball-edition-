@@ -2,7 +2,7 @@ import tkinter as tk
 
 import pygame
 
-from animations import animate_gif, animate_text, create_adorableness_graph, create_intelligence_graph
+from animations import animate_gif, animate_text, create_adorableness_graph, create_intelligence_graph, create_listening_graph
 from helper_funcs import throwback, transition_screen
 from slide_creation import cutesy_func
 
@@ -110,6 +110,23 @@ class pwettyUI:
         cutesy_func("Everything has changed.mp3", self.window, self.clear_window, reason_text, 14, self.play_click_sound, memory_text, lambda frame, callback: create_intelligence_graph(frame, callback=callback, animate=True), "dunno.gif", lambda: transition_screen(self.window, self.clear_window, self.slide_03))
 
     def slide_03(self):
+        reason_text = """ Reason #3: The Superhuman Listener (a.k.a. The 'Wait, You Actually Heard That?' Factor)\n 1. Attention Span:
+           - Longer than a giraffe's neck\n
+           - Can focus on my ramblings for hours without dozing off\n 2. Memory Bank:\n
+           - Recalls I stored my project in which freaking directory in my computer when I'm crying about how I can't find my project\n
+           - Remembers all project ideas and whatever shite I'm supposed to learn while I'm busy being a lazy arse\n
+           3. Reaction Time:
+           - Responds to my messages faster than a cat to a laser pointer\n
+           - May have developed telepathic abilities\n  4. Scientific* Conclusion:\n
+           Mr. Attentive's listening skills > World's most advanced AI + all moms combined(except my mom ofc)\n
+           * Science conducted by yours truly while ugly crying from happiness\n 
+           Behold, the graph of  listening prowess!"""
+
+        memory_text = """ Remembah we once had a discussion about is it wong calling  people as thing?\n Then I asked yo if this song is  offensive\n and yo said nah it's probably just cultural difference,\n dat was kinda funny 🤣\n we be  discussing about all sorts of weird things hehe\n B...but....do yo know\n "You  are the best thing that's ever been mine"(still applicable UwU) """
+
+        cutesy_func("mine.mp3", self.window, self.clear_window, reason_text, 15, self.play_click_sound, memory_text, lambda frame, callback: create_listening_graph(frame, callback=callback, animate=True), "pat.gif", lambda: transition_screen(self.window, self.clear_window, self.slide_04))
+
+    def slide_04(self):
         pass
 
 

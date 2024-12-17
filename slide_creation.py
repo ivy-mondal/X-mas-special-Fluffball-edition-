@@ -2,7 +2,7 @@ import tkinter as tk
 
 import pygame
 
-from animations import animate_text, animate_gif, create_intelligence_graph
+from animations import animate_text, animate_gif, create_intelligence_graph, create_listening_graph
 from helper_funcs import create_gift_button
 
 
@@ -92,11 +92,18 @@ if __name__ == "__main__":
         pass
 
 
-    reason_text = """ Reason #2: Intellectual Superiority (a.k.a. "The Smart Cookie Factor")\n   1. Problem-Solving Prowess: - Consistently provides solutions to my wildest ideas\n - Success rate: ~99.9% (margin of error: my stubbornnes)\n   2. First Impression:   - Initial thought: "Wow, this guy's brain is on another level\n   - Impression has only strengthened over time\n   3. Comparative Analysis:   - Subject (Mr meow) vs. Control Group (rest of humanity)\n   - Result: Subject's intelligence far exceeds control group (Note: Analysis may be influenced by high affection level)\n     4. Objective* Conclusion: Mr. Fluffball's intelligence > Universe's smartest person's intelligence
-         * Objectivity may be compromised due to overwhelming bias\n    Further research ongoing, but results suggest strong correlation 
-         between Mr. Fluffball's intelligence and my increasing adoration.\n "Don't believe me? Check out this graph!"""
+    reason_text = """ Reason #3: The Superhuman Listener (a.k.a. The 'Wait, You Actually Heard That?' Factor)\n 1. Attention Span:
+           - Longer than a giraffe's neck  - Can focus on my ramblings for hours without dozing off\n
+           2. Memory Bank: - Recalls I stored my project in which freaking directory in my computer\n
+            when I'm crying about how I can't find my project\n
+           - Remembers all project ideas & whatever shite I'm supposed to learn while I'm busy being a lazy arse\n
+           3. Reaction Time: - Responds to my messages faster than a cat to a laser pointer\n
+           - May have developed telepathic abilities\n  4. Scientific* Conclusion:\n
+           Mr. Attentive's listening skills > World's most advanced AI + all moms combined(except my mom ofc)\n
+           * Science conducted by yours truly while ugly crying from happiness\n 
+           Behold, the graph of  listening prowess!"""
 
-    memory_text = "This song gotta be meh when I noticed I won't stop yapping with yo,\n I remember finding excuses ahem learning roadblocks\n and ofc I need yo to solve my doubt 👉👈\n As they wrote 'All I know since yesterday, everything has changed'~\n (me in a morning months ago UwU) "
+    memory_text = """Remembah we once had a discussion about is it wong calling  people as thing?\n Then I asked yo if this song is  offensive\n and yo said nah it's probably just cultural difference,\n dat was kinda funny 🤣\n we be  discussing about all sorts of weird things hehe\n B...but....do yo know\n "You  are the best thing that's ever been mine"(still applicable UwU) """
 
-    cutesy_func("Everything has changed.mp3", window, clear_window, reason_text, 14, play_click_sound, memory_text, lambda frame, callback: create_intelligence_graph(frame, callback=callback, animate=True), "dunno.gif", None)
+    cutesy_func("mine.mp3", window, clear_window, reason_text, 14, play_click_sound, memory_text, lambda frame, callback: create_listening_graph(frame, callback=callback, animate=True), "pat.gif", None)
     window.mainloop()
