@@ -1,3 +1,4 @@
+import random
 import tkinter
 import tkinter as tk
 from datetime import datetime
@@ -184,7 +185,7 @@ def create_listening_graph(frame, callback=None, animate=True):
                 still_animating = False
                 for i, (bar, target) in enumerate(zip(bars, listening_levels)):
                     new_width = min(current_width, target)
-                    bar.set_height(new_width)
+                    bar.set_width(new_width)
                     if new_width < target:
                         still_animating = True
 
@@ -194,7 +195,7 @@ def create_listening_graph(frame, callback=None, animate=True):
                 canvas.draw()
 
                 if still_animating:
-                    frame.after(30, update_heights, current_width + 10)
+                    frame.after(30, update_heights, current_width + 1)
                 else:
                     for bar in bars:
                         width = float(bar.get_width())
@@ -212,4 +213,57 @@ def create_listening_graph(frame, callback=None, animate=True):
     else:
         bars = ax.barh(categories, listening_levels,
                       color=['green', 'purple', 'blue', 'gray', 'red'])
+        canvas_widget.pack()
+
+def create_meow_o_meter(frame, callback=None, animate=True):
+    fig = Figure(figsize=(10, 6))
+    ax = fig.add_subplot(111)
+    ax.set_ylim(0, 110)
+
+    meow_types = ['Cute', 'Demanding', 'Sleepy', 'Hungry', 'Playful']
+    meow_ratings = [random.randint(80, 110) for _ in range(5)]
+
+    canvas = FigureCanvasTkAgg(fig, master=frame)
+    canvas.draw()
+    canvas_widget = canvas.get_tk_widget()
+
+    if animate:
+        canvas_widget.pack()
+
+        def animate_bars():
+            bars = ax.bar(meow_types, [0] * len(meow_ratings), color='orange')
+            canvas_widget.pack()
+
+            def update_heights(current_height=0):
+                still_animating = False
+                for i, (bar, target) in enumerate(zip(bars, meow_ratings)):
+                    new_height = min(current_height, target)
+                    bar.set_height(new_height)
+                    if new_height < target:
+                        still_animating = True
+
+                ax.set_xlabel("meow types")
+                ax.set_ylabel("Meow Cuteness Level")
+                ax.set_title("mr meow's Meow-O-Meter")
+                canvas.draw()
+
+                if still_animating:
+                    frame.after(30, update_heights, current_height + 1)
+                else:
+                    for bar in bars:
+                        height = bar.get_height()
+                        ax.text(bar.get_x() + bar.get_width() / 2., height,
+                     f'{height}%', ha='center', va='bottom')
+                    canvas.draw()
+
+                    if callback:  # Call the callback when animation is done
+                        callback()
+
+            update_heights()
+
+        frame.after(0, animate_bars)
+
+    else:
+        bars = ax.bar(meow_types, meow_ratings,
+                      color='orange')
         canvas_widget.pack()

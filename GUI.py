@@ -2,7 +2,7 @@ import tkinter as tk
 
 import pygame
 
-from animations import animate_gif, animate_text, create_adorableness_graph, create_intelligence_graph, create_listening_graph
+from animations import animate_gif, animate_text, create_adorableness_graph, create_intelligence_graph, create_listening_graph, create_meow_o_meter
 from helper_funcs import throwback, transition_screen
 from slide_creation import cutesy_func
 
@@ -110,13 +110,12 @@ class pwettyUI:
         cutesy_func("Everything has changed.mp3", self.window, self.clear_window, reason_text, 14, self.play_click_sound, memory_text, lambda frame, callback: create_intelligence_graph(frame, callback=callback, animate=True), "dunno.gif", lambda: transition_screen(self.window, self.clear_window, self.slide_03))
 
     def slide_03(self):
-        reason_text = """ Reason #3: The Superhuman Listener (a.k.a. The 'Wait, You Actually Heard That?' Factor)\n 1. Attention Span:
-           - Longer than a giraffe's neck\n
-           - Can focus on my ramblings for hours without dozing off\n 2. Memory Bank:\n
-           - Recalls I stored my project in which freaking directory in my computer when I'm crying about how I can't find my project\n
-           - Remembers all project ideas and whatever shite I'm supposed to learn while I'm busy being a lazy arse\n
-           3. Reaction Time:
-           - Responds to my messages faster than a cat to a laser pointer\n
+        reason_text = """  Reason #3: The Superhuman Listener (a.k.a. The 'Wait, You Actually Heard That?' Factor)\n 1. Attention Span:
+           - Longer than a giraffe's neck  - Can focus on my ramblings for hours without dozing off\n
+           2. Memory Bank: - Recalls I stored my project in which freaking directory in my computer\n
+            when I'm crying about how I can't find my project\n
+           - Remembers all project ideas & whatever shite I'm supposed to learn while I'm busy being a lazy arse\n
+           3. Reaction Time: - Responds to my messages faster than a cat to a laser pointer\n
            - May have developed telepathic abilities\n  4. Scientific* Conclusion:\n
            Mr. Attentive's listening skills > World's most advanced AI + all moms combined(except my mom ofc)\n
            * Science conducted by yours truly while ugly crying from happiness\n 
@@ -124,9 +123,17 @@ class pwettyUI:
 
         memory_text = """ Remembah we once had a discussion about is it wong calling  people as thing?\n Then I asked yo if this song is  offensive\n and yo said nah it's probably just cultural difference,\n dat was kinda funny 🤣\n we be  discussing about all sorts of weird things hehe\n B...but....do yo know\n "You  are the best thing that's ever been mine"(still applicable UwU) """
 
-        cutesy_func("mine.mp3", self.window, self.clear_window, reason_text, 15, self.play_click_sound, memory_text, lambda frame, callback: create_listening_graph(frame, callback=callback, animate=True), "pat.gif", lambda: transition_screen(self.window, self.clear_window, self.slide_04))
+        cutesy_func("mine.mp3", self.window, self.clear_window, reason_text, 15, self.play_click_sound, memory_text, lambda frame, callback: create_listening_graph(frame, callback=callback, animate=True), "pat_pat.gif", lambda: transition_screen(self.window, self.clear_window, self.slide_04))
 
     def slide_04(self):
+        reason_text = """ Reason #4: The Human Cat (a.k.a. The 'Did You Just Meow?' Phenomenon)\n 1. Meow Responsiveness: - Faster than I can say "pweeasee"\n - May actually be part feline (DNA test pending)\n 2. Meow Quality: - Better than my cats because they don't give a shi about me unless they hunggy\n - Has been known to make real cats jealous(because I said so)\n  3. Meow Variety:\n  - Can produce different meows on demand , normal-> Russian, they sound same though :)\n - Might secretly be voice actor for cat food commercials(definitely true)\n 4. Scientific* Conclusion: \n Mr meow's meowing abilities > Actual cats + All cat videos on the internet combined\n * Science conducted by yours truly while giggling uncontrollably\n Prepare yourself for the Meow-O-Meter!"""
+
+        memory_text = """ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n YO REMEMBAH YO MADE A MEOW GENERATING CODE FOR ME!!!!!! \n
+        Also yo can speak  cat language!!! 😱\n like "Mrrrowl prrrbit nyaaa mweeeep mrrrp-mrrrp purraww kittykittyssssp\n prrrrrrup nyaaaaaow mlemlemlem mrrowp pspspspsp mew-mew-prrrbt\n mraaaaaaaw mrrrffle nyanyanya prrrup-prrrup.🐈"\n and "Mriow nyaak purrul miawën fssskt nyanya~" \n 🤣 Pweeese nevah change >_< cause yo know\n "The world may change my whole life through but nothing's gonna change my love for you"\n(yea me know that's a bold statement UwU)"""
+
+        cutesy_func("ma_meow.mp3", self.window, self.clear_window, reason_text, 14, self.play_click_sound, memory_text, lambda frame, callback: create_meow_o_meter(frame, callback=callback, animate=True), "nya_nya.gif", lambda: transition_screen(self.window, self.clear_window, self.slide_05))
+
+    def slide_05(self):
         pass
 
 
