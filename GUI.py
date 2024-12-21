@@ -2,7 +2,7 @@ import tkinter as tk
 
 import pygame
 
-from animations import animate_gif, animate_text, create_adorableness_graph, create_intelligence_graph, create_listening_graph, create_meow_o_meter
+from animations import animate_gif, animate_text, create_adorableness_graph, create_intelligence_graph, create_listening_graph, create_meow_o_meter, create_lighthouse_plot
 from helper_funcs import throwback, transition_screen
 from slide_creation import cutesy_func
 
@@ -134,6 +134,14 @@ class pwettyUI:
         cutesy_func("ma_meow.mp3", self.window, self.clear_window, reason_text, 14, self.play_click_sound, memory_text, lambda frame, callback: create_meow_o_meter(frame, callback=callback, animate=True), "nya_nya.gif", lambda: transition_screen(self.window, self.clear_window, self.slide_05))
 
     def slide_05(self):
+        reason_text = """ Reason #5: My Personal Human Lighthouse in the Storm of Life\n 1. Comfort Level: - Warmer than blanket in cold winter night\n - Cozier than hugging a sleeping cat\n 2. Patience Meter: - Higher than Mt. Everest\n - Longer than the Trans-Siberian Railway\n 3. Reliability Rating:  - More dependable than gravity\n  - Steadier than a cat's judgmental stare\n  4. Project Support:  - From "I want to make spinning globe" to "Let's move to Mars"\n - Always says "it's fine :)" (even when it's not)\n 5. Life Event Companion: \n - There for both "give name to my cat" and "whoops me almost died, teehee"\n - Brings fluffiness to all occasions\n Here comes meow chart      
+             """
+
+        memory_text = """ Zamn yo remembah I used to be confused if yo are ai or something >.<\n You would talk so less back then and neow yo are a cuddly cat UwU\n now that's called character developement ;p \n As the writer said,\n 'It took us a while\n With every breath a new day\n With Love on the line\n We had our share of mistakes\n But all your flaws and scars are mineeeeeeee\n Still falling for you'\n(the audacity of yo to be so awesome QwQ)"""
+
+        cutesy_func("falling.mp3", self.window, self.clear_window, reason_text, 14, self.play_click_sound, memory_text, lambda frame, callback: create_lighthouse_plot(frame, callback=callback, animate=True), "UwU.gif", lambda: transition_screen(self.window, self.clear_window, self.slide_06))
+
+    def slide_06(self):
         pass
 
 

@@ -1,8 +1,8 @@
 import random
-import tkinter
 import tkinter as tk
 from datetime import datetime
 
+import numpy as np
 from PIL import Image, ImageTk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
@@ -212,8 +212,9 @@ def create_listening_graph(frame, callback=None, animate=True):
 
     else:
         bars = ax.barh(categories, listening_levels,
-                      color=['green', 'purple', 'blue', 'gray', 'red'])
+                       color=['green', 'purple', 'blue', 'gray', 'red'])
         canvas_widget.pack()
+
 
 def create_meow_o_meter(frame, callback=None, animate=True):
     fig = Figure(figsize=(10, 6))
@@ -253,7 +254,7 @@ def create_meow_o_meter(frame, callback=None, animate=True):
                     for bar in bars:
                         height = bar.get_height()
                         ax.text(bar.get_x() + bar.get_width() / 2., height,
-                     f'{height}%', ha='center', va='bottom')
+                                f'{height}%', ha='center', va='bottom')
                     canvas.draw()
 
                     if callback:  # Call the callback when animation is done
@@ -267,3 +268,84 @@ def create_meow_o_meter(frame, callback=None, animate=True):
         bars = ax.bar(meow_types, meow_ratings,
                       color='orange')
         canvas_widget.pack()
+
+
+def create_lighthouse_plot(frame, callback=None, animate=True):
+    #print("Function started!")
+    fig = Figure(figsize=(8, 8))
+    ax = fig.add_subplot(111, projection='polar')
+
+    categories = ['Comfort', 'Patience', 'Reliability', 'Support', 'Companionship']
+    values = [10, 10, 10, 10, 9]
+
+    angles = np.linspace(0, 2 * np.pi, len(categories), endpoint=False)
+    values_plot = np.concatenate((values, [values[0]]))
+    angles_plot = np.concatenate((angles, [angles[0]]))
+
+    canvas = FigureCanvasTkAgg(fig, master=frame)
+    canvas_widget = canvas.get_tk_widget()
+    canvas_widget.pack()
+
+    if animate:
+        #print("Starting animation sequence!")
+        current_values = [0] * len(values)
+
+        def update_values(step=0.0):
+            #print(f"Animation step: {step}")
+
+            nonlocal current_values
+            ax.clear()
+            current_values_plot = np.concatenate((current_values, [current_values[0]]))
+
+            still_animating = False
+            for i in range(len(current_values)):
+                if current_values[i] < values[i]:
+                    current_values[i] = (min(values[i], int(step)))
+                    still_animating = True
+
+            plot_color = '#FF69B4'
+            fill_color = '#FFB6C1'
+            ax.plot(angles_plot, current_values_plot, linewidth=2,
+                    color=plot_color, marker='o', markersize=8)
+            ax.fill(angles_plot, current_values_plot, alpha=0.3,
+                    color=fill_color)
+            ax.set_thetagrids(angles * 180 / np.pi, categories)
+            ax.set_ylim(0, 10)
+            ax.set_title("Lighthouse of Wuv: UwU")
+
+            if step >= 9.0:
+                angle_value = float(angles_plot[-2])
+                value_value = float(values_plot[-2])
+                ax.annotate("1 point deducted\nbecause you miss calls 😛",
+                            xy=(angle_value, value_value),
+                            xytext=(angle_value, 12),
+                            ha='center', va='bottom',
+                            bbox=dict(boxstyle="round,pad=0.3",
+                                      fc="#FFE1E9", ec="#FF69B4", lw=2),
+                            arrowprops=dict(arrowstyle="->,head_length=0.7",
+                                            fc="#FF69B4", ec="#FF69B4"))
+
+            canvas.draw()
+
+            if still_animating:
+                #print(f"Scheduling next frame... Next step will be {step + 0.5}")
+                frame.after(100, lambda: update_values(float(step + 0.5)))
+            else:
+                #print("Animation complete!")
+                if callback:
+                    callback()
+
+        frame.after(0, lambda: update_values(0.0))
+    #print("Setup complete!")
+
+
+if __name__ == "__main__":
+    import tkinter as tk
+
+    root = tk.Tk()
+    frame = tk.Frame(root)
+    frame.pack()
+
+    create_lighthouse_plot(frame)
+
+    root.mainloop()
