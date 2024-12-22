@@ -1,5 +1,5 @@
 import random
-import tkinter as tk
+import tkinter
 from datetime import datetime
 
 import numpy as np
@@ -271,7 +271,7 @@ def create_meow_o_meter(frame, callback=None, animate=True):
 
 
 def create_lighthouse_plot(frame, callback=None, animate=True):
-    #print("Function started!")
+    # print("Function started!")
     fig = Figure(figsize=(8, 8))
     ax = fig.add_subplot(111, projection='polar')
 
@@ -287,11 +287,11 @@ def create_lighthouse_plot(frame, callback=None, animate=True):
     canvas_widget.pack()
 
     if animate:
-        #print("Starting animation sequence!")
+        # print("Starting animation sequence!")
         current_values = [0] * len(values)
 
         def update_values(step=0.0):
-            #print(f"Animation step: {step}")
+            # print(f"Animation step: {step}")
 
             nonlocal current_values
             ax.clear()
@@ -328,15 +328,15 @@ def create_lighthouse_plot(frame, callback=None, animate=True):
             canvas.draw()
 
             if still_animating:
-                #print(f"Scheduling next frame... Next step will be {step + 0.5}")
+                # print(f"Scheduling next frame... Next step will be {step + 0.5}")
                 frame.after(100, lambda: update_values(float(step + 0.5)))
             else:
-                #print("Animation complete!")
+                # print("Animation complete!")
                 if callback:
                     callback()
 
         frame.after(0, lambda: update_values(0.0))
-    #print("Setup complete!")
+    # print("Setup complete!")
 
 
 if __name__ == "__main__":
