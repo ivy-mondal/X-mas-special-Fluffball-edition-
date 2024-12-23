@@ -2,7 +2,7 @@ import tkinter as tk
 
 import pygame
 
-from animations import animate_text, animate_gif, create_lighthouse_plot
+from animations import animate_text, animate_gif, create_lighthouse_plot, create_moms_love_plot
 from helper_funcs import create_gift_button
 
 
@@ -91,10 +91,16 @@ if __name__ == "__main__":
         pass
 
 
-    reason_text = """ Reason #5: My Personal Human Lighthouse in the Storm of Life\n 1. Comfort Level: - Warmer than blanket in cold winter night\n - Cozier than hugging a sleeping cat\n 2. Patience Meter: - Higher than Mt. Everest\n - Longer than the Trans-Siberian Railway\n 3. Reliability Rating:  - More dependable than gravity\n  - Steadier than a cat's judgmental stare\n  4. Project Support:  - From "I want to make spinning globe" to "Let's move to Mars"\n - Always says "it's fine :)" (even when it's not)\n 5. Life Event Companion: \n - There for both "give name to my cat" and "whoops me almost died, teehee"\n - Brings fluffiness to all occasions\n Here comes meow chart      
-     """
+    reason_text = """ Reason #6: The Guy Who Became My Mom's Honorary Son (What Sorcery Is This?)\n 1. Mom's Approval Rating: - - Higher than her standards for India's prime minister\n - More positive than her reaction to my A+ report card\n 2. Suspicious Activity: - All guys are baaaadd, except mr fluffball\n 
+        - If guy in 10m radius of her precious daughter:
+                                                      if mr fluffy:                                
+                                                                  gentle smile
+                                                      else:
+                                                           mama bear mode activated: death stare!
+    \n 3. Shared Brain Cell Count: - You two are more in sync than our Wi-Fi connection\n  - Howwwwww do you two always arrive at same conclusion?!\n  4. Ganging Up Frequency:  - More often than I eat chocolate (I want chocolate waaaah!)\n - More consistent than my sleep schedule\n 5. Lost Son Probability: \n - Higher than the chances of me understanding quantum physics\n - She won't shut up about how you must be her long lost son or something....\n Legit got adopted by mom on  children's day lmao      
+    """
 
     memory_text = """ Zamn yo remembah I used to be confused if yo are ai or something >.<\n You would talk so less back then and neow yo are a cuddly cat UwU\n now that's called character developement ;p \n As the writer said,\n 'It took us a while\n With every breath a new day\n With Love on the line\n We had our share of mistakes\n But all your flaws and scars are mineeeeeeee\n Still falling for you'\n(the audacity of yo to be so awesome QwQ)"""
 
-    cutesy_func("falling.mp3", window, clear_window, reason_text, 14, play_click_sound, memory_text, lambda frame, callback: create_lighthouse_plot(frame, callback=callback, animate=True), "UwU.gif", None)
+    cutesy_func("song_6.mp3", window, clear_window, reason_text, 14, play_click_sound, memory_text, lambda frame, callback: create_moms_love_plot(frame, callback=callback, animate=True), "no_6.gif", None)
     window.mainloop()

@@ -19,7 +19,7 @@ def animate_gif(window, gif_path, position=(0, 0), callback=None, duration=5):
     except EOFError:
         pass
     # Create label for the gif
-    gif_label = tk.Label(window)
+    gif_label = tkinter.Label(window)
     gif_label.place(x=position[0], y=position[1])
 
     # Animate frames
@@ -34,7 +34,7 @@ def animate_gif(window, gif_path, position=(0, 0), callback=None, duration=5):
             gif_label.config(image=frames[frame_number])
             next_frame = (frame_number + 1) % len(frames)
             window.after(100, update_frame, next_frame, start_time)
-        except tk.TclError:
+        except tkinter.TclError:
             return
 
     update_frame()
@@ -339,6 +339,77 @@ def create_lighthouse_plot(frame, callback=None, animate=True):
     # print("Setup complete!")
 
 
+def create_moms_love_plot(frame, callback=None, animate=True):
+    fig = Figure(figsize=(12, 6))
+    ax = fig.add_subplot(111)
+
+    categories = ['Mom\'s Approval', 'Suspicion Immunity', 'Shared Brain Cells',
+                 'Ganging Up Power', 'Honorary Son Status']
+    yo_values = [9.9, 9.8, 9.5, 9.7, 9.9]
+    average_guy_values = [2.0, 0.5, 1.0, 0.1, 0.0]
+
+    x = np.arange(len(categories))
+    width = 0.35
+
+    canvas = FigureCanvasTkAgg(fig, master=frame)
+    canvas_widget = canvas.get_tk_widget()
+    canvas_widget.pack()
+
+    if animate:
+        current_yo_values = [0] * len(yo_values)
+        current_avg_values = [0] * len(average_guy_values)
+
+        def update_values(step=0.0):
+            ax.clear()
+            still_animating = False
+
+            # Update current values
+            for i in range(len(current_yo_values)):
+                if current_yo_values[i] < yo_values[i]:
+                    current_yo_values[i] = min(yo_values[i], float(step))
+                    still_animating = True
+                if current_avg_values[i] < average_guy_values[i]:
+                    current_avg_values[i] = min(average_guy_values[i], float(step))
+                    still_animating = True
+
+            # Create bars
+            rects1 = ax.bar(x - width/2, current_yo_values, width,
+                           label='Mr Fluffy', color='lightblue')
+            rects2 = ax.bar(x + width/2, current_avg_values, width,
+                           label='Average Guy', color='lightgrey')
+
+            # Customize the plot
+            ax.set_ylabel('Mom\'s Love-o-meter')
+            ax.set_title('You vs Average Guy in Mom\'s Eyes')
+            ax.set_xticks(x)
+            ax.set_xticklabels(categories, rotation=45, ha='right')
+            ax.legend()
+
+            # Add value labels on bars
+            ax.bar_label(rects1, padding=3)
+            ax.bar_label(rects2, padding=3)
+
+            # Add annotation when animation is nearly complete
+            if step >= 9.5:
+                ax.annotate("Mom's new favorite child? 😱",
+                           xy=(4, 9.9),
+                           xytext=(3, 7),
+                           ha='center', va='bottom',
+                           bbox=dict(boxstyle="round,pad=0.3", fc="yellow", ec="b", lw=2),
+                           arrowprops=dict(arrowstyle="->"))
+
+            fig.tight_layout()
+            canvas.draw()
+
+            if still_animating:
+                frame.after(100, lambda: update_values(step + 0.5))
+            else:
+                if callback:
+                    callback()
+
+        frame.after(0, lambda: update_values(0.0))
+
+
 if __name__ == "__main__":
     import tkinter as tk
 
@@ -346,6 +417,6 @@ if __name__ == "__main__":
     frame = tk.Frame(root)
     frame.pack()
 
-    create_lighthouse_plot(frame)
+    create_moms_love_plot(frame)
 
     root.mainloop()

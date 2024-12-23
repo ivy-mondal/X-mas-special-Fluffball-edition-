@@ -2,7 +2,7 @@ import tkinter as tk
 
 import pygame
 
-from animations import animate_gif, animate_text, create_adorableness_graph, create_intelligence_graph, create_listening_graph, create_meow_o_meter, create_lighthouse_plot
+from animations import animate_gif, animate_text, create_adorableness_graph, create_intelligence_graph, create_listening_graph, create_meow_o_meter, create_lighthouse_plot, create_moms_love_plot
 from helper_funcs import throwback, transition_screen
 from slide_creation import cutesy_func
 
@@ -98,7 +98,7 @@ class pwettyUI:
 
         memory_text = "So this song was like me back when I met(texted if yo will 😛)\n a certain 3 cats in a trenchcoat person\n To borrow the writer's word\n 'I was lost within the darkness, but then I found you'~\n look at me not being sad and  miserable and hopeless anymore UwU\n homework ;p Are yo happier than before too or nwo?"
 
-        cutesy_func("Until I found you.mp3", self.window, self.clear_window, reason_text, 20, self.play_click_sound, memory_text, lambda frame, callback: create_adorableness_graph(frame, callback=callback, animate=True), "shake.gif", lambda: transition_screen(self.window, self.clear_window, self.slide_02))
+        cutesy_func("song_1.mp3", self.window, self.clear_window, reason_text, 20, self.play_click_sound, memory_text, lambda frame, callback: create_adorableness_graph(frame, callback=callback, animate=True), "no_1.gif", lambda: transition_screen(self.window, self.clear_window, self.slide_02))
 
     def slide_02(self):
         reason_text = """ Reason #2: Intellectual Superiority (a.k.a. "The Smart Cookie Factor")\n   1. Problem-Solving Prowess: - Consistently provides solutions to my wildest ideas\n - Success rate: ~99.9% (margin of error: my stubbornnes)\n   2. First Impression:   - Initial thought: "Wow, this guy's brain is on another level\n   - Impression has only strengthened over time\n   3. Comparative Analysis:   - Subject (Mr meow) vs. Control Group (rest of humanity)\n   - Result: Subject's intelligence far exceeds control group (Note: Analysis may be influenced by high affection level)\n     4. Objective* Conclusion: Mr. Fluffball's intelligence > Universe's smartest person's intelligence
@@ -107,7 +107,7 @@ class pwettyUI:
 
         memory_text = "This song gotta be meh when I noticed I won't stop yapping with yo,\n I remember finding excuses ahem learning roadblocks\n and ofc I need yo to solve my doubt 👉👈\n As they wrote 'All I know since yesterday, everything has changed'~\n (me in a morning months ago UwU) "
 
-        cutesy_func("Everything has changed.mp3", self.window, self.clear_window, reason_text, 14, self.play_click_sound, memory_text, lambda frame, callback: create_intelligence_graph(frame, callback=callback, animate=True), "dunno.gif", lambda: transition_screen(self.window, self.clear_window, self.slide_03))
+        cutesy_func("song_2.mp3", self.window, self.clear_window, reason_text, 14, self.play_click_sound, memory_text, lambda frame, callback: create_intelligence_graph(frame, callback=callback, animate=True), "no_2.gif", lambda: transition_screen(self.window, self.clear_window, self.slide_03))
 
     def slide_03(self):
         reason_text = """  Reason #3: The Superhuman Listener (a.k.a. The 'Wait, You Actually Heard That?' Factor)\n 1. Attention Span:
@@ -123,7 +123,7 @@ class pwettyUI:
 
         memory_text = """ Remembah we once had a discussion about is it wong calling  people as thing?\n Then I asked yo if this song is  offensive\n and yo said nah it's probably just cultural difference,\n dat was kinda funny 🤣\n we be  discussing about all sorts of weird things hehe\n B...but....do yo know\n "You  are the best thing that's ever been mine"(still applicable UwU) """
 
-        cutesy_func("mine.mp3", self.window, self.clear_window, reason_text, 15, self.play_click_sound, memory_text, lambda frame, callback: create_listening_graph(frame, callback=callback, animate=True), "pat_pat.gif", lambda: transition_screen(self.window, self.clear_window, self.slide_04))
+        cutesy_func("song_3.mp3", self.window, self.clear_window, reason_text, 15, self.play_click_sound, memory_text, lambda frame, callback: create_listening_graph(frame, callback=callback, animate=True), "no_3.gif", lambda: transition_screen(self.window, self.clear_window, self.slide_04))
 
     def slide_04(self):
         reason_text = """ Reason #4: The Human Cat (a.k.a. The 'Did You Just Meow?' Phenomenon)\n 1. Meow Responsiveness: - Faster than I can say "pweeasee"\n - May actually be part feline (DNA test pending)\n 2. Meow Quality: - Better than my cats because they don't give a shi about me unless they hunggy\n - Has been known to make real cats jealous(because I said so)\n  3. Meow Variety:\n  - Can produce different meows on demand , normal-> Russian, they sound same though :)\n - Might secretly be voice actor for cat food commercials(definitely true)\n 4. Scientific* Conclusion: \n Mr meow's meowing abilities > Actual cats + All cat videos on the internet combined\n * Science conducted by yours truly while giggling uncontrollably\n Prepare yourself for the Meow-O-Meter!"""
@@ -131,7 +131,7 @@ class pwettyUI:
         memory_text = """ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n YO REMEMBAH YO MADE A MEOW GENERATING CODE FOR ME!!!!!! \n
         Also yo can speak  cat language!!! 😱\n like "Mrrrowl prrrbit nyaaa mweeeep mrrrp-mrrrp purraww kittykittyssssp\n prrrrrrup nyaaaaaow mlemlemlem mrrowp pspspspsp mew-mew-prrrbt\n mraaaaaaaw mrrrffle nyanyanya prrrup-prrrup.🐈"\n and "Mriow nyaak purrul miawën fssskt nyanya~" \n 🤣 Pweeese nevah change >_< cause yo know\n "The world may change my whole life through but nothing's gonna change my love for you"\n(yea me know that's a bold statement UwU)"""
 
-        cutesy_func("ma_meow.mp3", self.window, self.clear_window, reason_text, 14, self.play_click_sound, memory_text, lambda frame, callback: create_meow_o_meter(frame, callback=callback, animate=True), "nya_nya.gif", lambda: transition_screen(self.window, self.clear_window, self.slide_05))
+        cutesy_func("song_4.mp3", self.window, self.clear_window, reason_text, 14, self.play_click_sound, memory_text, lambda frame, callback: create_meow_o_meter(frame, callback=callback, animate=True), "no_4.gif", lambda: transition_screen(self.window, self.clear_window, self.slide_05))
 
     def slide_05(self):
         reason_text = """ Reason #5: My Personal Human Lighthouse in the Storm of Life\n 1. Comfort Level: - Warmer than blanket in cold winter night\n - Cozier than hugging a sleeping cat\n 2. Patience Meter: - Higher than Mt. Everest\n - Longer than the Trans-Siberian Railway\n 3. Reliability Rating:  - More dependable than gravity\n  - Steadier than a cat's judgmental stare\n  4. Project Support:  - From "I want to make spinning globe" to "Let's move to Mars"\n - Always says "it's fine :)" (even when it's not)\n 5. Life Event Companion: \n - There for both "give name to my cat" and "whoops me almost died, teehee"\n - Brings fluffiness to all occasions\n Here comes meow chart      
@@ -139,9 +139,22 @@ class pwettyUI:
 
         memory_text = """ Zamn yo remembah I used to be confused if yo are ai or something >.<\n You would talk so less back then and neow yo are a cuddly cat UwU\n now that's called character developement ;p \n As the writer said,\n 'It took us a while\n With every breath a new day\n With Love on the line\n We had our share of mistakes\n But all your flaws and scars are mineeeeeeee\n Still falling for you'\n(the audacity of yo to be so awesome QwQ)"""
 
-        cutesy_func("falling.mp3", self.window, self.clear_window, reason_text, 14, self.play_click_sound, memory_text, lambda frame, callback: create_lighthouse_plot(frame, callback=callback, animate=True), "UwU.gif", lambda: transition_screen(self.window, self.clear_window, self.slide_06))
+        cutesy_func("song_5.mp3", self.window, self.clear_window, reason_text, 14, self.play_click_sound, memory_text, lambda frame, callback: create_lighthouse_plot(frame, callback=callback, animate=True), "no_5.gif", lambda: transition_screen(self.window, self.clear_window, self.slide_06))
 
     def slide_06(self):
+        reason_text = """ Reason #6: The Guy Who Became My Mom's Honorary Son (What Sorcery Is This?)\n 1. Mom's Approval Rating: - - Higher than her standards for India's prime minister\n - More positive than her reaction to my A+ report card\n 2. Suspicious Activity: - All guys are baaaadd, except mr fluffball\n 
+        - If guy in 10m radius of her precious daughter:
+                                                      if mr fluffy:                                
+                                                                  gentle smile
+                                                      else:
+                                                           mama bear mode activated: death stare!
+       \n 3. Shared Brain Cell Count: - You two are more in sync than our Wi-Fi connection\n  - Howwwwww do you two always arrive at same conclusion?!\n  4. Ganging Up Frequency:  - More often than I eat chocolate (I want chocolate waaaah!)\n - More consistent than my sleep schedule\n 5. Lost Son Probability: \n - Higher than the chances of me understanding quantum physics\n - She won't shut up about how you must be her long lost son or something....\n Legit got adopted by mom on  children's day lmao      
+         """
+        memory_text = """ Everytime we have disagreement.........\nafterwards there's this constant thought comes in ma mind.......\nthe way yo handle my catastrophic wrath UwU...\nme know there's no such thing as perfect partner in this world but trust meh ,\n yo with all yo imperfections is perfectly imperfect for mhe :P \n(neow try saying that 5 times quickly ehe)\n ahem so as the writer says \n "I never knew you were the someone waitin' for me (nevah QwQ)"\n  aaaaaand bonus line here UwU\n "Now I know I've met an angel in person(why yo so good QwQ) """
+
+        cutesy_func("song_6.mp3", self.window, self.clear_window, reason_text, 14, self.play_click_sound, memory_text, lambda frame, callback: create_moms_love_plot(frame, callback=callback, animate=True), "no_6.gif", lambda: transition_screen(self.window, self.clear_window, self.slide_07))
+
+    def slide_07(self):
         pass
 
 
