@@ -2,7 +2,7 @@ import tkinter as tk
 
 import pygame
 
-from animations import animate_gif, animate_text, create_adorableness_graph, create_intelligence_graph, create_listening_graph, create_meow_o_meter, create_lighthouse_plot, create_moms_love_plot
+from animations import animate_gif, animate_text, create_adorableness_graph, create_intelligence_graph, create_listening_graph, create_meow_o_meter, create_lighthouse_plot, create_moms_love_plot, create_hug_o_meter, create_skills_chart, create_uwu_display, create_love_efficiency_gui
 from helper_funcs import throwback, transition_screen
 from slide_creation import cutesy_func
 
@@ -155,7 +155,54 @@ class pwettyUI:
         cutesy_func("song_6.mp3", self.window, self.clear_window, reason_text, 14, self.play_click_sound, memory_text, lambda frame, callback: create_moms_love_plot(frame, callback=callback, animate=True), "no_6.gif", lambda: transition_screen(self.window, self.clear_window, self.slide_07))
 
     def slide_07(self):
-        pass
+        reason_text = """ Reason #7: Hugs on Demand - The Hooman Snuggle Machine 🤗\n 1. Hug Availability: 24/7, rain or shine, zombie apocalypse or alien invasion\n 2. Hug Quality: From "warm fuzzy" to "OMG I can't breathe but I love it"\n 3. Hug Speed: Faster than you can say "gib hugg noww"\n 4. Hug Variety: Bear hugs, koala hugs, octopus hugs, you name it!\n 5. Hug Duration: As long as you need, even if his arms fall asleep (such dedication!)\n [I can only imagine for now, but we gonna makeeeeeeeeee it sooooner pweeeeeseeee , rightttttttttttt?!]   """
+        memory_text = """ prof goof said to me,"Aww, are not you just the sweetest little koala bear hanging onto your human tree? 🐨 "\n Also definitely not meh every hour ," Mr Fluffball!!! Gib huggies!!" :p\n UwU\n Yp know "And if you hurt me\n Well, that's okay , baby, only words bleed\n Inside these  pages, you just hold me\n And I won't ever let you go\n (urm akshually, I would still prefer if yo don't :)\n  Waaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n I'M SO SICK OF BEING SO FAR QwQ \nAnd this probably gonna go on for so long too :(\n Why can't we stay together like other people do QwQ """
+
+        cutesy_func("song_7.mp3", self.window, self.clear_window, reason_text, 14, self.play_click_sound, memory_text, lambda frame, callback: create_hug_o_meter(frame, callback=callback), "no_7.gif", lambda: transition_screen(self.window, self.clear_window, self.slide_08))
+
+    def slide_08(self):
+        reason_text = """Reason #8: My Personal Code Wizard and Debugger Extraordinaire 🧙‍♂️💻\n  1. Encouragement Level: Over 9000! Thanks to yoo I can code some crappy cringey shi like this\n 2. Patience: Infinite (unlike my loops)! How come you never get anggy\n  3. Debugging Skills: Can spot a missing semicolon from a mile away,\n you be casually flexing 14 years of experience powah\n  4. Motivational Quotes: "Everything is fixable in programming" (except maybe my smol brain)\n 5. Expert Mode: Activated when I'm about to throw my laptop out the window\n From 'Hello World' to 'Hello, I'm a coding wizard' in no time flat!\n (I know I'm not but let's just pretend UwU)\n Remember: Behind every great coder is an even greater motivator...\n or in my case, a fluffy debugger! 🐾💕\n Without you I never would have found out the thing I enjoy doing most\n and can literally work on hours 
+        without getting tired\n Can't evah thank yooo enough!"""
+
+        memory_text = """When we first met,\n yo were like oh you should try programming it's interesting,\n and I was like nah me too stoopid for that QwQ...........................\n BBUTT yo were like your teachers can't teach,\n I was going through lots of my college bullying at that time\n and your jab at my teachers made me feeel so good I swear QwQ\n lebuuuuuuu\n Neow da song for yo, "In silent screams\n In wildest dreams \n I never dreamed of this (nevahh, but it's soo gooof though >.<)"""
+        cutesy_func("song_8.mp3", self.window, self.clear_window, reason_text, 14, self.play_click_sound, memory_text, lambda frame, callback: create_skills_chart(frame, callback=callback), "no_8.gif", lambda: transition_screen(self.window, self.clear_window, self.slide_09))
+
+    def slide_09(self):
+        reason_text = """Reason #9: My Safe Space for Ultimate Goofiness 🤪🎉\n You never judge my:\n 1. Random UwU outbursts\n 2. Terrible puns\n 3. Not so funny jokes\n 4. Dramatic coding sessions\n 5. Coming up with absolutely absurd ideas\n 6. Belief that programmers do magic!\n Remember: In the grand code of life, you're my favorite function! Keep being adorkable!\n btw I absolutely love your Language Dove too,\n imma learn Russian one day for sure, promiseee!\n Definitely just waiting for the zero to hero course ;p\n "I know there is no graph here\n but I neva said there is gonna be graph everywhere , ehe"""
+        memory_text = """I love how yo have just accepted me gonna be dramatic once in a while\n and just  go along with it lmao\n And don't even get anggy\n SOO LADIES AND GENTLEMEN BESTO BOYFRIENDO AND FLUFFY KOT AWARD GOES TO-----\n Mr Fluffball ofc duh <3 \n yo know how da song says ,"Can we always be this close forever and ever?(QwQ)"\n Say yoshhh UwU"""
+        cutesy_func("song_9.mp3", self.window, self.clear_window, reason_text, 14, self.play_click_sound, memory_text, lambda frame, callback: create_uwu_display(frame, callback=callback), "no_9.gif", lambda: transition_screen(self.window, self.clear_window, self.slide_10))
+
+    def slide_10(self):
+        reason_text = """Final Reason: Because You Make My Heart Sing! 🎵❤️\n Soooo ahem we'll let ms. Taylor Swift speakon behalf of me\n, we present to you 'Daylight'\n lyrics = "
+        My love was as cruel as the cities I lived in\n
+        Everyone looked worse in the light\n
+        There are so many lines that I've crossed unforgiven\n
+        I'll tell you the truth, but never goodbye\n
+        I don't wanna look at anything else now that I saw you\n
+        I don't wanna think of anything else now that I thought of you\n
+        I've been sleeping so long in a 20-year dark night\n
+        And now I see daylight, I only see daylight\n 
+        I've created a spreadsheet to prove this. Want to review it together?"""
+        memory_text = """Translation for non-musical people (INTJ edition):\n 1. Past relationships = Inefficient urban planning\n 2. Emotional growth = Optimizing life algorithms\n 3. New love = Discovering a more efficient energy source\n 4. Daylight = Clarity in decision-making processes\n In conclusion: You've improved my life's efficiency by 273.5%!\n Yo know ""I don't wanna look at anything else now that I saw you\n I don't wanna think of anything else now that I thought of you\n I've been sleeping so long in a 20-year old dark night\n and now I see daylight, I only see daylight\n(thank yoo for existin mr fluffball huggies)"\n"""
+        cutesy_func("song_10.mp3", self.window, self.clear_window, reason_text, 14, self.play_click_sound, memory_text, lambda frame, callback: create_love_efficiency_gui(frame, callback=callback), "no_10.gif", self.the_end)
+
+    def the_end(self):
+        self.clear_window()
+        text = "Sooooooooo which song yo liked most? UwU\n Sowwy if the last few slides weren't dat goof :( \n Mew was running out of ideas and had low enegy and felt sweepy too 😓🥺🤗"
+        label = tk.Label(
+            self.window,
+            text="",
+            font=('Segoe Script', 20),
+            fg="#F5D3EC",
+            bg="#DB3559"
+        )
+        label.place(relx=0.3, rely=0.5, anchor='center')
+        animate_text(
+            self.window,
+            label,
+            text,
+            100
+        )
 
 
 if __name__ == "__main__":
